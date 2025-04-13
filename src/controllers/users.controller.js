@@ -2,20 +2,20 @@ import asyncHandler from "express-async-handler";
 import User from "../models/users.model.js";
 import generateToken from "../utils/token.utils.js";
 
-// Skapa en ny användare
+// Skapar en ny användare
 export const createUser = asyncHandler(async (req, res) => {
     console.log("Raw request body:", req.body); // Debug-logg
 
     try {
         const { firstName, lastName, email, password } = req.body;
 
-        // Kontrollera att alla fält är ifyllda
+        // Kontrollerar att alla fält är ifyllda
         if (!firstName || !lastName || !email || !password) {
             console.log("Saknade fält:", { firstName, lastName, email, password });
             return res.status(400).json({ error: "Alla fält måste fyllas i" });
         }
 
-        // Kolla om användaren redan finns i databasen
+        // Kollar om användaren redan finns i databasen
         const userExists = await User.findOne({ email });
         if (userExists) {
             return res.status(400).json({ error: "Användaren finns redan" });
@@ -23,10 +23,10 @@ export const createUser = asyncHandler(async (req, res) => {
 
         console.log("Användare skapas:", firstName, lastName, email);
 
-        // Skapa och spara användaren
+        // Skapar och sparar användaren
         const user = await User.create({ firstName, lastName, email, password });
 
-        // Skicka tillbaka den skapade användaren utan lösenordet
+        // Skickar tillbaka den skapade användaren utan lösenordet
         res.status(201).json({
             _id: user._id,
             firstName: user.firstName,
@@ -40,7 +40,7 @@ export const createUser = asyncHandler(async (req, res) => {
     }
 });
 
-// Hämta alla användare
+// Hämtar alla användare
 export const getAllUsers = asyncHandler(async (req, res) => {
     try {
         const users = await User.find();
@@ -67,7 +67,7 @@ export const getUserProfile = asyncHandler(async (req, res) => {
     }
 });
 
-// Logga in användare och få en JWT-token
+// Loggar in användare och få en JWT-token
 export const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 

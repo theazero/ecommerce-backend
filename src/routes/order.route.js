@@ -4,7 +4,7 @@ import { protect } from "../middleware/auth.middleware.js";
 
 const router = express.Router();
 
-router.post("/", protect, createOrder); // Skapa en order
-router.get("/", protect, getOrders); // Hämta orderhistoriken
+router.post("/", protect, createOrder); 
+router.get("/", protect, getOrders); 
 
 export default router;

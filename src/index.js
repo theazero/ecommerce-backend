@@ -1,6 +1,6 @@
 dotenv.config();
 
-//Skapa en express applikation
+//Skapar en express applikation
 
 import express from 'express'
 import mongoose from 'mongoose';
@@ -27,20 +27,20 @@ app.use("/api/orders", orderRoutes);
 const PORT = process.env.PORT || 9999
 const MONGO_URI = process.env.MONGO_URI
 
-app.use(express.json()); //vrf två gånger
+app.use(express.json()); //Vrf två gånger, funkar inte utan?
 
-app.use(notFound) //felhantering notfound från middleware
-app.use(errorHandler) //felhantering errorhandler middleware
+app.use(notFound) //Felhantering notfound från middleware
+app.use(errorHandler) //Felhantering errorhandler middleware
 
 
-//Starta igång servern
+//Startar igång servern
 const connectDB = async () => {
     try {
-        const conn = await mongoose.connect(MONGO_URI); // Ta bort onödiga alternativ
+        const conn = await mongoose.connect(MONGO_URI); 
         console.log(`MongoDB Connected: ${conn.connection.host}`);
     } catch (err) {
         console.error('MongoDB Connection Error:', err);
-        process.exit(1); // Stoppa servern vid anslutningsfel
+        process.exit(1); 
     }
 };
 

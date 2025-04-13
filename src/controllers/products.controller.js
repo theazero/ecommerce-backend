@@ -4,13 +4,13 @@ import Product from "../models/product.model.js";
 import asyncHandler from "express-async-handler";
 import mongoose from "mongoose";
 
-// Hämta alla produkter
+// Hämtar alla produkter
 export const getAllProducts = asyncHandler(async (req, res) => {
     const products = await Product.find().exec();
     res.status(200).json(products);
 });
 
-// Hämta en enskild produkt
+// Hämtar en enskild produkt
 export const getProductById = asyncHandler(async (req, res) => {
     const { id } = req.params;
 
@@ -27,7 +27,7 @@ export const getProductById = asyncHandler(async (req, res) => {
     res.status(200).json(product);
 });
 
-// Lägga till en produkt
+// Lägger till en produkt
 export const createProduct = asyncHandler(async (req, res) => {
     console.log("Raw request body:", req.body);
 
@@ -44,7 +44,7 @@ export const createProduct = asyncHandler(async (req, res) => {
     res.status(201).json(newProduct);
 });
 
-// Uppdatera en produkt
+// Uppdaterar en produkt
 export const updateProduct = asyncHandler(async (req, res) => {
     const { id } = req.params;
 
@@ -61,7 +61,7 @@ export const updateProduct = asyncHandler(async (req, res) => {
     res.status(200).json(updatedProduct);
 });
 
-// Ta bort en produkt
+// Tar bort en produkt
 export const deleteProduct = asyncHandler(async (req, res) => {
     const { id } = req.params;
 

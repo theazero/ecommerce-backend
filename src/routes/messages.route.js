@@ -1,5 +1,4 @@
-//Här kodar du så man kan skicka meddelande 
-//''Ni ska skapa en separat endpoint där användaren kan skicka ett meddelande med en POST. Där ska ni validera att fälten `name`, `email` & `message` har skickats med. Returnera en status 200 om fälten är korrekt skickade, annars en status 400. Meddelanden behöver inte sparas i databasen.''
+// skicka meddelande 
 
 import express from "express";
 
